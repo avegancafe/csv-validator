@@ -86,7 +86,7 @@ function App() {
             <div className="max-w-screen-lg w-full mb-12">
               <div className="pt-8">
                 <Label className="flex flex-col justify-between gap-2">
-                  <div className="shrink-0">Test CSV:</div>
+                  <div className="shrink-0">Roster Data CSV:</div>
                   <Input
                     disabled={!templateHeaders?.length}
                     className="w-1/3"
