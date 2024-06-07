@@ -104,12 +104,15 @@ function App() {
               <Progress className="w-2/3" value={progressValue} />
             ) : (
               <div className="max-w-screen-lg w-full">
-                {validationResult && (
+                {validationResult ? (
                   <>
                     {validationResult.success ? (
                       <span className="flex gap-2 items-center">
                         <CheckCircledIcon className="text-green-500 size-6" />
-                        All columns are present!
+                        All columns are present! Please send this CSV to{' '}
+                        <a href="mailto:support@j2health.com" className='underline'>
+                          support@j2health.com
+                        </a>
                       </span>
                     ) : (
                       <div className="flex flex-col gap-4">
@@ -133,13 +136,15 @@ function App() {
                         </p>
                         <p>
                           Please contact support if you have any questions at{' '}
-                          <a href="mailto:support@j2health.com">
+                          <a href="mailto:support@j2health.com" className='underline'>
                             support@j2health.com
                           </a>
                         </p>
                       </div>
                     )}
                   </>
+                ) : (
+                  <div className="text-lg">No file uploaded yet.</div>
                 )}
               </div>
             )}
