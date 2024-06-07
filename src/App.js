@@ -101,7 +101,7 @@ function App() {
               Validation Result
             </div>
             {loading ? (
-              <Progress className="w-2/3" value={progressValue} />
+              <Progress className="w-2/3 mt-8" value={progressValue} />
             ) : (
               <div className="max-w-screen-lg w-full">
                 {validationResult ? (
