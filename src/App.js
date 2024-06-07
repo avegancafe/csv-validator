@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Papa from 'papaparse'
 import { Input } from '@/components/ui/input'
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
@@ -11,18 +11,18 @@ function App() {
   const [validationResult, setValidationResult] = useState(null)
   const [loading, setLoading] = useState(false)
   const [progressValue, setProgressValue] = useState(0)
-
-  const handleTemplateUpload = (event) => {
-    const file = event.target.files[0]
-    if (file) {
-      Papa.parse(file, {
+  useEffect(() => {
+    Papa.parse(
+      '/csv-validator/marketability-template.csv',
+      {
+        download: true,
         complete: (result) => {
           const headers = result.data[0]
           setTemplateHeaders(headers)
         },
-      })
-    }
-  }
+      }
+    )
+  }, [])
 
   const randomize = (approximate) => (0.6 + Math.random() * 0.4) * approximate
 
@@ -78,20 +78,9 @@ function App() {
         </CardHeader>
         <CardContent className="flex flex-col w-full justify-center items-center pb-16">
           <div className="max-w-screen-lg w-full mb-12">
-            <div className="pt-16">
-              <Label className="flex flex-col justify-between gap-2">
-                <div className="shrink-0">Upload Template CSV:</div>
-                <Input
-                  className="w-1/3"
-                  type="file"
-                  accept=".csv"
-                  onChange={handleTemplateUpload}
-                />
-              </Label>
-            </div>
             <div className="pt-8">
               <Label className="flex flex-col justify-between gap-2">
-                <div className="shrink-0">Upload Test CSV:</div>
+                <div className="shrink-0">Test CSV:</div>
                 <Input
                   disabled={!templateHeaders?.length}
                   className="w-1/3"
