@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --indigo: #253761;
+    --indigo: 222 45% 26%;
     --ultramarine: #1a3f98;
     --grey: #ecece7;
     --ice-blue: #e8f1fc;
     --blueberry: #4c97fd;
 
-    --background: 222 71% 35%;
+    --background: var(--indigo);
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
