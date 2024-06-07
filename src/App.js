@@ -76,7 +76,7 @@ function App() {
         </MenubarMenu>
       </Menubar>
       <div className="App px-20 py-12">
-        <Card className="shadow-2xl items-center">
+        <Card className="shadow-2xl items-center max-w-screen-xl m-auto">
           <CardDescription className="text-lg pl-24 pt-8">
             Hello! Please upload a CSV file to validate it against our template.
             Once you upload the file, we will check if all required columns are
