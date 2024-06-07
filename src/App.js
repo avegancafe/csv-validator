@@ -79,7 +79,7 @@ function App() {
         <Card className="shadow-2xl items-center">
           <CardDescription className="text-lg pl-24 pt-8">
             Hello! Please upload a CSV file to validate it against our template.
-            Once you upload the file, we will check if all the columns are
+            Once you upload the file, we will check if all required columns are
             present.
           </CardDescription>
           <CardContent className="flex flex-col w-full justify-center items-center pb-16">
@@ -97,7 +97,9 @@ function App() {
                 </Label>
               </div>
             </div>
-            <div className="text-xl flex pb-6 pl-20 w-full">Validation Result</div>
+            <div className="text-xl flex pb-6 pl-20 w-full">
+              Validation Result
+            </div>
             {loading ? (
               <Progress className="w-2/3" value={progressValue} />
             ) : (
