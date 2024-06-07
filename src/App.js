@@ -78,7 +78,7 @@ function App() {
       <div className="App px-20 py-12">
         <Card className="shadow-2xl items-center">
           <CardDescription className="text-lg pl-24 pt-8">
-            Hello! Please upload a CSV file to validate it against the template.
+            Hello! Please upload a CSV file to validate it against our template.
             Once you upload the file, we will check if all the columns are
             present.
           </CardDescription>
@@ -97,24 +97,45 @@ function App() {
                 </Label>
               </div>
             </div>
+            <div className="text-xl flex pb-6 pl-20 w-full">Validation Result</div>
             {loading ? (
-              <Progress className="w-1/2" value={progressValue} />
+              <Progress className="w-2/3" value={progressValue} />
             ) : (
               <div className="max-w-screen-lg w-full">
                 {validationResult && (
                   <>
-                    <div className="text-xl flex pb-6">Validation Result</div>
                     {validationResult.success ? (
                       <span className="flex gap-2 items-center">
                         <CheckCircledIcon className="text-green-500 size-6" />
                         All columns are present!
                       </span>
                     ) : (
-                      <span className="flex gap-2 items-center">
-                        <CrossCircledIcon className="text-red-500 size-6" />
-                        Missing columns:{' '}
-                        {validationResult.missingHeaders.join(', ')}
-                      </span>
+                      <div className="flex flex-col gap-4">
+                        <p>
+                          <div className="flex gap-2 items-center">
+                            <CrossCircledIcon className="text-red-500 size-6" />
+                            <div className="text-lg">
+                              {validationResult.missingHeaders.length} Missing
+                              column
+                              {validationResult.missingHeaders.length > 1
+                                ? 's'
+                                : ''}
+                              :
+                            </div>
+                          </div>
+                          <ul className="list-disc pl-16 pt-2">
+                            {validationResult.missingHeaders.map((header) => (
+                              <li key={header}>{header}</li>
+                            ))}
+                          </ul>
+                        </p>
+                        <p>
+                          Please contact support if you have any questions at{' '}
+                          <a href="mailto:support@j2health.com">
+                            support@j2health.com
+                          </a>
+                        </p>
+                      </div>
                     )}
                   </>
                 )}
